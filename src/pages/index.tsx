@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import { signIn } from "next-auth/react";
 import Head from "next/head";
+import { Button } from "@ui/Button";
 
 const Home: NextPage = () => {
   return (
@@ -12,13 +13,13 @@ const Home: NextPage = () => {
       </Head>
 
       <div>
-        <button
+        <Button
           onClick={() => {
             signIn();
           }}
         >
           Log in
-        </button>
+        </Button>
       </div>
     </>
   );
