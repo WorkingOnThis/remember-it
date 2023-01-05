@@ -11,4 +11,12 @@
     @apply bg-background font-sans text-off-white;
     font-size: 62.5%;
   }
+
+  html,
+  body,
+  body > div:first-child,
+  div#__next,
+  div#__next > div {
+    height: 100%;
+  }
 }
