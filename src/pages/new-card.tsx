@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import { DashboardLayout } from "../components/layouts/DashboardLayout";
-import { MySessions } from "../components/screens/MySessions";
+import { NewCard } from "../components/screens/NewCard";
 import { unstable_getServerSession } from "../libs/unstable_getServerSession";
 import { authOptions } from "./api/auth/[...nextauth]";
 
@@ -8,7 +8,7 @@ const DashboardPage: NextPage = () => {
   return (
     <>
       <DashboardLayout>
-        <MySessions />
+        <NewCard />
       </DashboardLayout>
     </>
   );
