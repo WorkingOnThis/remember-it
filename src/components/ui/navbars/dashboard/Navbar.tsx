@@ -16,7 +16,7 @@ export const MainItem = ({ name }: { name: string }) => {
     font-size: var(--font-size-smallPlus);
     font-weight: 500; */}
 
-      <span className="flex h-6 grow items-center truncate rounded pl-1 text-left text-xs font-medium not-italic leading-normal">
+      <span className="flex h-6 grow-2 items-center truncate rounded pl-1 text-left text-xs font-medium not-italic leading-normal">
         {name}
       </span>
     </div>
@@ -48,7 +48,7 @@ export const Spacer = () => {
   return (
     // flex-shrink: initial;
     // flex-basis: initial;
-    <div className="flex h-full grow flex-row"></div>
+    <div className="flex h-full grow-2 flex-row"></div>
   );
 };
 
@@ -64,7 +64,7 @@ export const Footer = () => {
 
 export const Navbar = () => {
   return (
-    <nav className="relative flex h-full w-56 min-w-[220px] max-w-[330px] shrink-0 flex-col border-r border-divider bg-main-dark">
+    <nav className="w-56 relative flex h-full min-w-[220px] max-w-[330px] shrink-0 flex-col border-r border-divider bg-main-dark">
       <div className="flex flex-initial flex-col items-stretch gap-2 py-2 px-3">
         Head
         <button
@@ -75,7 +75,7 @@ export const Navbar = () => {
           Log out
         </button>
       </div>
-      <div className="flex flex-initial grow flex-col overflow-y-auto px-3 ">
+      <div className="flex flex-initial grow-2 flex-col overflow-y-auto px-3 ">
         <MainItem name="Inbox" />
         <MainItem name="My issues" />
         <MainItem name="Views" />

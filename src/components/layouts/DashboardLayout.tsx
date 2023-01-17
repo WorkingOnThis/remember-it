@@ -20,7 +20,7 @@ export const DashboardLayout: FC<Props> = ({ children, title }) => {
 
       <Navbar />
 
-      <main className="grow relative flex w-full  flex-initial flex-col place-items-stretch overflow-auto">
+      <main className="relative flex w-full flex-initial  grow-2 flex-col place-items-stretch overflow-auto">
         {children}
       </main>
     </div>
