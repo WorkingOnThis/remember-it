@@ -56,7 +56,14 @@ export const Footer = () => {
   return (
     <div className="flex flex-col gap-1 pb-3">
       <div className="flex flex-initial flex-row items-center justify-between gap-1">
-        agregado de boton
+        <button
+          className="w-full"
+          onClick={() => {
+            signOut();
+          }}
+        >
+          Log out
+        </button>
       </div>
     </div>
   );
@@ -64,16 +71,9 @@ export const Footer = () => {
 
 export const Navbar = () => {
   return (
-    <nav className="w-56 relative flex h-full min-w-[220px] max-w-[330px] shrink-0 flex-col border-r border-divider bg-main-dark">
+    <nav className="w-56 relative flex h-full min-w-[220px] max-w-[330px] shrink-0 flex-col border-y-0 border-l-0 border-r border-solid border-divider bg-main-dark">
       <div className="flex flex-initial flex-col items-stretch gap-2 py-2 px-3">
         Head
-        <button
-          onClick={() => {
-            signOut();
-          }}
-        >
-          Log out
-        </button>
       </div>
       <div className="flex flex-initial grow-2 flex-col overflow-y-auto px-3 ">
         <MainItem name="Inbox" />

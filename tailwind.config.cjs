@@ -31,6 +31,7 @@ module.exports = {
     colors: {
       transparent: "transparent",
       white: "#fff",
+      red: "#e03131",
       "off-white": "#f7f8f8",
       "transparent-white": "rgba(255, 255, 255, 0.08)",
       background: "#000212",
@@ -42,6 +43,8 @@ module.exports = {
       "secondary-dark": "#1d1e2b",
       "gray-options": "#858699",
       divider: "#292b41",
+      "divider-left": "#858699",
+      mate: "#21232e",
     },
     spacing: {
       0: "0",

@@ -6,6 +6,7 @@ import { MantineProvider } from "@mantine/core";
 import { trpc } from "../utils/trpc";
 
 import "../styles/globals.css";
+import { NotificationsProvider } from "@mantine/notifications";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -20,7 +21,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
           colorScheme: "dark",
         }}
       >
-        <Component {...pageProps} />
+        <NotificationsProvider>
+          <Component {...pageProps} />
+        </NotificationsProvider>
       </MantineProvider>
     </SessionProvider>
   );

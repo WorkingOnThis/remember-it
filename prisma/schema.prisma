@@ -34,13 +34,15 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String        @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?       @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  deck          Deck[]
+  DefaultDeck   DefaultDeck[]
 }
 
 model VerificationToken {
@@ -50,3 +52,38 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model DefaultDeck {
+  userId String @unique
+  deckId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
+}
+
+model Deck {
+  id          String        @id @default(cuid())
+  name        String
+  description String?
+  userId      String
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cards       Card[]
+  DefaultDeck DefaultDeck[]
+}
+
+model Card {
+  id     String @id @default(cuid())
+  front  String
+  back   String
+  deckId String
+  deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  // Metadata Metadata[]
+}
+
+// Every Card has a Metadata
+// model Metadata {
+//   id     String @id @default(cuid())
+//   card   Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
+//   cardId String
+//   key    String
+//   value  String
+// }

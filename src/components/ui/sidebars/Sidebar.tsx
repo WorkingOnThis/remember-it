@@ -1,33 +1,30 @@
-// interface SidebarProps {
-//   metadataForm: UseFormReturnType<MetadataFormValues>;
-// }
-
 import { Select } from "@mantine/core";
+import { UseFormReturnType } from "@mantine/form";
+import { Card } from "../../../types/card";
 
-// const SideBar = ({ metadataForm }: SidebarProps) => {
-export const SideBar = () => {
+export const SideBar = ({ form }: { form: UseFormReturnType<Card> }) => {
   console.log("sidebar");
 
   return (
-    <div className="grow relative min-w-[320px] max-w-[480px] border-y-0 border-r-0 border-l border-solid border-divider bg-secondary-dark">
+    <div className="relative min-w-[320px] max-w-[480px] grow-2 border-y-0 border-r-0 border-l border-solid border-divider bg-secondary-dark">
       <div className="flex flex-row ">
         <div className="h-14 mx-4 flex flex-1 items-center">
           <div className="flex flex-1 flex-row items-center justify-between">
-            <div className="w-24 my-2 shrink-0">
+            <div className="my-2 w-[90px] shrink-0">
               <span className="text-xs text-gray-options">Detalles</span>
             </div>
           </div>
         </div>
         <div className="absolute top-8 h-full w-full overflow-y-auto py-3 pl-4 pr-1">
           <div className="mb-3 flex flex-initial flex-row">
-            <div className="w-24 my-2 shrink-0">
+            <div className="my-2 w-[90px] shrink-0">
               <span className="text-xs text-gray-options">Tipo</span>
             </div>
             <div className="user-select flex w-full flex-initial flex-row">
-              <div className="grow mr-5 flex h-full max-w-full shrink items-center justify-start overflow-hidden px-2">
+              <div className="mr-5 flex h-full max-w-full shrink grow-2 items-center justify-start overflow-hidden px-2">
                 <Select
                   placeholder="Seleccionar"
-                  // {...metadataForm.getInputProps("type")}
+                  {...form.getInputProps("metadata.type")}
                   defaultValue="palabra"
                   data={[
                     // { value: TRANSLATION_TYPES.word, label: "Palabra" },
@@ -40,14 +37,14 @@ export const SideBar = () => {
             </div>
           </div>
           <div className="mb-3 flex flex-initial flex-row">
-            <div className="w-24 my-2 shrink-0">
+            <div className="my-2 w-[90px] shrink-0">
               <span className="text-xs text-gray-options">Prioridad</span>
             </div>
             <div className="user-select flex w-full flex-initial flex-row">
-              <div className="grow mr-5 flex h-full max-w-full shrink items-center justify-start overflow-hidden px-2">
+              <div className="mr-5 flex h-full max-w-full shrink grow-2 items-center justify-start overflow-hidden px-2">
                 <Select
                   placeholder="Seleccionar"
-                  // {...metadataForm.getInputProps("priority")}
+                  {...form.getInputProps("metadata.priority")}
                   data={[
                     { value: "1", label: "1 - Alta" },
                     { value: "2", label: "2 - Media/Alta" },
@@ -60,14 +57,14 @@ export const SideBar = () => {
             </div>
           </div>
           <div className="mb-3 flex flex-initial flex-row">
-            <div className="w-24 my-2 shrink-0">
+            <div className="my-2 w-[90px] shrink-0">
               <span className="text-xs text-gray-options">Refinado</span>
             </div>
             <div className="user-select flex w-full flex-initial flex-row">
-              <div className="grow mr-5 flex h-full max-w-full shrink items-center justify-start overflow-hidden px-2">
+              <div className="mr-5 flex h-full max-w-full shrink grow-2 items-center justify-start overflow-hidden px-2">
                 <Select
                   placeholder="Seleccionar"
-                  // {...metadataForm.getInputProps("refined")}
+                  // {...form.getInputProps("metadata.refined")}
                   data={[
                     { value: "No", label: "No" },
                     { value: "expresion", label: "Por mejorar" },
@@ -78,15 +75,15 @@ export const SideBar = () => {
             </div>
           </div>
           <div className="mb-3 flex flex-initial flex-row">
-            <div className="w-24 my-2 shrink-0">
+            <div className="my-2 w-[90px] shrink-0">
               <span className=" text-xs text-gray-options">Versión</span>
             </div>
             <div className="user-select flex w-full flex-initial flex-row">
-              <div className="grow mr-5 flex h-full max-w-full shrink items-center justify-start overflow-hidden px-2">
+              <div className="mr-5 flex h-full max-w-full shrink grow-2 items-center justify-start overflow-hidden px-2">
                 <Select
                   placeholder="Seleccionar"
                   disabled
-                  // {...metadataForm.getInputProps("version")}
+                  // {...form.getInputProps("metadata.version")}
                   data={[{ value: "1.0.0", label: "1.0.0" }]}
                 />
               </div>
