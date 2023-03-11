@@ -1,8 +1,13 @@
 import { ActionIcon, Button, SegmentedControl, Textarea } from "@mantine/core";
 import Link from "next/link";
 import { ArrowsUpDown, Refresh, ClearAll } from "tabler-icons-react";
+import { trpc } from "../../../utils/trpc";
 
-export const AddCardDefaultForm = () => {
+export const AddCard = ({ schemaSelected }: { schemaSelected: string }) => {
+  const { data: fields } = trpc.field.getAllBySchemaId.useQuery({
+    id: schemaSelected,
+  });
+
   return (
     <div className="flex min-w-[0px] grow-2 basis-[760px] flex-col bg-main-dark text-white">
       <form className="flex h-full max-h-full overflow-hidden">
@@ -33,6 +38,8 @@ export const AddCardDefaultForm = () => {
             className="mx-auto mt-4 flex h-full w-[calc(100%)] max-w-[860px] flex-initial grow-2 flex-row overflow-hidden"
           >
             <div className="w-full">
+              {JSON.stringify(fields, null, 2)}
+
               <Textarea
                 label={<div className="text-base mb-1">A traducir:</div>}
                 // {...translationForm.getInputProps("sourceText")}

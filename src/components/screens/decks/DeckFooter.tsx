@@ -12,10 +12,12 @@ export const DeckFooter = ({
 }) => {
   const isDefault = id === defaultDeck;
   const { mutateAsync } = trpc.deck.updateDefault.useMutation();
+  const listDecks = trpc.deck.getAll.useQuery();
 
   const handleUpdate = async () => {
     await mutateAsync({ id })
       .then(() => {
+        listDecks.refetch();
         showNotification({
           title: "Mazo actualizado",
           message: "Se ha actualizado el mazo por defecto",

@@ -43,6 +43,7 @@ model User {
   sessions      Session[]
   deck          Deck[]
   DefaultDeck   DefaultDeck[]
+  Schema        Schema[]
 }
 
 model VerificationToken {
@@ -71,19 +72,32 @@ model Deck {
 }
 
 model Card {
-  id     String @id @default(cuid())
-  front  String
-  back   String
-  deckId String
-  deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
-  // Metadata Metadata[]
+  id       String @id @default(cuid())
+  deckId   String
+  schemaId String
+  state    String
+  deck     Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  schema   Schema @relation(fields: [schemaId], references: [id])
 }
 
-// Every Card has a Metadata
-// model Metadata {
-//   id     String @id @default(cuid())
-//   card   Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
-//   cardId String
-//   key    String
-//   value  String
-// }
+model Schema {
+  id     String  @id @default(cuid())
+  name   String
+  userId String
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fields Field[]
+  cards  Card[]
+}
+
+model Field {
+  id           String  @id @default(cuid())
+  name         String
+  description  String?
+  type         String
+  component    String
+  defaultValue String?
+  validation   String?
+  values       String?
+  schemaId     String
+  schema       Schema  @relation(fields: [schemaId], references: [id], onDelete: Cascade)
+}

@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import { DashboardLayout } from "../components/layouts/DashboardLayout";
-import { NewCard } from "../components/screens/NewCard";
+import { NewCard } from "../components/screens/cards/NewCard";
 import { unstable_getServerSession } from "../libs/unstable_getServerSession";
 import { authOptions } from "./api/auth/[...nextauth]";
 
