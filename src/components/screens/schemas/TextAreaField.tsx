@@ -4,10 +4,19 @@ import StarterKit from "@tiptap/starter-kit";
 import TextAlign from "@tiptap/extension-text-align";
 import UnderlineControl from "@tiptap/extension-underline";
 import { Label } from "./Label";
+import { UseFormReturnType } from "@mantine/form";
+import { FormValues } from "../cards/SideForm";
+import { Button, TextInput } from "@mantine/core";
 
-export const TextAreaField = ({ label }: { label: string }) => {
-  const content = "";
-
+export const TextAreaField = ({
+  label,
+  index,
+  form,
+}: {
+  label: string;
+  index: number;
+  form: UseFormReturnType<FormValues>;
+}) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -18,7 +27,9 @@ export const TextAreaField = ({ label }: { label: string }) => {
       // HighlightControl,
       TextAlign.configure({ types: ["heading", "paragraph"] }),
     ],
-    content,
+    onUpdate: ({ editor }) => {
+      form.setFieldValue(`cardValues.${index}.value`, editor.getHTML());
+    },
   });
 
   return (

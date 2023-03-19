@@ -72,12 +72,13 @@ model Deck {
 }
 
 model Card {
-  id       String @id @default(cuid())
-  deckId   String
-  schemaId String
-  state    String
-  deck     Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
-  schema   Schema @relation(fields: [schemaId], references: [id])
+  id        String      @id @default(cuid())
+  deckId    String
+  schemaId  String
+  state     String
+  deck      Deck        @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  schema    Schema      @relation(fields: [schemaId], references: [id])
+  cardValue CardValue[]
 }
 
 model Schema {
@@ -90,7 +91,7 @@ model Schema {
 }
 
 model Field {
-  id           String  @id @default(cuid())
+  id           String      @id @default(cuid())
   name         String
   description  String?
   type         String
@@ -99,5 +100,15 @@ model Field {
   validation   String?
   values       String?
   schemaId     String
-  schema       Schema  @relation(fields: [schemaId], references: [id], onDelete: Cascade)
+  schema       Schema      @relation(fields: [schemaId], references: [id], onDelete: Cascade)
+  FieldValue   CardValue[]
+}
+
+model CardValue {
+  id      String @id @default(cuid())
+  value   String
+  fieldId String
+  cardId  String
+  field   Field  @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+  card    Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
 }
