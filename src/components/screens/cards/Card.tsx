@@ -1,16 +1,7 @@
 import { trpc } from "../../../utils/trpc";
-import { SideForm } from "./SideForm";
 
-export const AddCard = ({
-  schemaSelected,
-  deckSelected,
-}: {
-  schemaSelected: string;
-  deckSelected: string;
-}) => {
-  const { data: fields } = trpc.field.getAllBySchemaId.useQuery({
-    id: schemaSelected,
-  });
+export const Card = ({ cardId }: { cardId: string }) => {
+  const { data: card } = trpc.card.getValuesByCardId.useQuery({ cardId });
 
   return (
     <div className="flex min-w-[0px] grow-2 basis-[760px] flex-col bg-main-dark text-white">
@@ -20,15 +11,7 @@ export const AddCard = ({
             id="body"
             className="mx-auto mt-4 flex h-full w-[calc(100%)] max-w-[860px] flex-initial grow-2 flex-row overflow-hidden"
           >
-            {fields && (
-              <div className="w-full">
-                <SideForm
-                  fields={fields}
-                  schemaId={schemaSelected}
-                  deckId={deckSelected}
-                />
-              </div>
-            )}
+            {/* {fields && <div className="w-full"></div>} */}
           </div>
         </div>
       </div>

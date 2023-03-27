@@ -19,7 +19,7 @@ export const deckRouter = router({
       });
       return "Deck created";
     }),
-  getAll: protectedProcedure.query(async ({ ctx }) => {
+  getAll: protectedProcedure.output(listDeckSchema).query(async ({ ctx }) => {
     const { prisma, session } = ctx;
     const defaultDeck = await prisma.defaultDeck.findFirstOrThrow({
       where: {
@@ -44,7 +44,6 @@ export const deckRouter = router({
       decks: decks,
     };
   }),
-
   updateDefault: protectedProcedure
     .input(DeckSchema.pick({ id: true }))
     .mutation(async ({ ctx, input }) => {
